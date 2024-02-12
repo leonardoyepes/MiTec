@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="formPersonaG">
+                <div class="row gy-5">
+                    <div class="col-6">
+                        <div>
+                            <div>
+                                <label for="nombreId">Nombre</label>
+                                <div>
+                                    <input type="text" formControlName="nombre" name="nombre" id="nombreId"
+                                        placeholder="ingrese su nombre">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger mt-2" role="alert" [hidden]="proNombre.valid">
+                                debe ingresar el valor en el campo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <div>
+                                <label for="CorreoId">Correo</label>
+                                <div>
+                                    <input type="email" formControlName="correo" name="nombre" id="CorreoId"
+                                        placeholder="ingrese su email">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger mt-2" role="alert" [hidden]="proCorreo.valid">
+                                <samp *ngIf="proCorreo.errors?.['required']">
+                                    debe ingresar el valor en el campo
+                                </samp>
+                                <samp *ngIf="proCorreo.errors?.['email']">
+                                    debe ingresar un correo valido
+                                </samp>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success mt-2" type="submit" [disabled]="formPersonaG.invalid">Enviar</button>
+                {{formPersonaG.valid}}
+            </form>
+        </div>
+    </div>
+</div>

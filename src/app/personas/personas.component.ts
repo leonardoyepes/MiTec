@@ -11,7 +11,6 @@ export class PersonasComponent {
     edad: '',
   };
   procesarDatos(dato: any) {
-    debugger;
     if (dato.edad > 23) {
       console.log('hola señor ' + dato.nombre + ' su edad supera la permitida');
     } else {

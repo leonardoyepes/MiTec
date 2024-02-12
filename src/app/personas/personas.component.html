@@ -1,26 +1,32 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <form (ngSubmit)="procesarDatos(persona)">
+            <form (ngSubmit)="procesarDatos(persona)" #formPersona="ngForm">
                 <label class="form-label">
                     Nombre persona
                 </label>
 
                 <div>
-                    <input type="text" name="nombre" placeholder="Ingrese su nombre completo" id="nombrePersona"
-                        [(ngModel)]="persona.nombre">
+                    <input type="text" name="nombre" class="form-contol" placeholder="Ingrese su nombre completo"
+                        id="nombrePersona" [(ngModel)]="persona.nombre" #nombrePersona required="true">
+                    <div class="alert alert-warning" role="alert" [hidden]="nombrePersona.value.length">
+                        debe ingragar el valor de nombre
+                    </div>
                 </div>
                 <br>
                 <div>
                     <input type="number" name="edad" placeholder="ingrese su edad" id="edadPersona"
-                        [(ngModel)]="persona.edad">
+                        [(ngModel)]="persona.edad" required="edadPersona.valid" #edadPersona>
+                </div>
+                <div class=" alert alert-warning" role="alert" [hidden]="edadPersona.value.length">
+                    debe ingragar el valor de edad
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success">Enviar</button>
+                <button type="submit" class="btn btn-success" [disabled]="!formPersona.valid">Enviar</button>
             </form>
         </div>
     </div>
 </div>
 
 
-{{persona|json}}
+{{formPersona.valid|json}}
